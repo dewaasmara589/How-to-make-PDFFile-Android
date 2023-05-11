@@ -27,10 +27,16 @@ import android.widget.Toast;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -75,12 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void createPdf() throws FileNotFoundException {
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                "/Tes1.pdf");
+                "/Tes3.pdf");
         OutputStream output = new FileOutputStream(file);
 
         PdfWriter pdfWriter = new PdfWriter(file);
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         Document document = new Document(pdfDocument);
+
+        pdfDocument.setDefaultPageSize(PageSize.A4);
 
         // -------- Content --------
 
@@ -93,11 +101,141 @@ public class MainActivity extends AppCompatActivity {
 
         ImageData data = ImageDataFactory.create(bitmapData);
         Image image = new Image(data);
+        image.scaleToFit(60, 60);
+
+        //Cetak Tabel
+        float columnWidth[] = {100f, 130f, 130f, 120f, 120f, 120f, 120f, 80f};
+        Table table1 = new Table(columnWidth);
+
+        //Tabel 1 --- 01
+        table1.addCell(new Cell(3,1).add(image).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell(1,2).add(new Paragraph("Travel Agent").setFontSize(16).setTextAlignment(TextAlignment.LEFT).set).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell(1,2).add(new Paragraph("Invoice").setFontSize(14).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+//        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 02
+        table1.addCell(new Cell(1,4).add(new Paragraph("Jl Krakatau B.97, Kota Salatiga, Jawa Tengah (Kode Pos : 50732)").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+//        table1.addCell(new Cell().add(new Paragraph("")));
+//        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("Invoice No :").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("21897948201").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+
+        //Tabel 1 --- 03
+        table1.addCell(new Cell(1,4).add(new Paragraph("Telepon : 085741844404    Email : travelagent@gmail.com").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+//        table1.addCell(new Cell().add(new Paragraph("")));
+//        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("Invoice Date :").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("11-05-2023").setFontSize(8).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+
+        //Tabel 1 --- 04
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table1.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+
+        //Tabel 1 --- 05
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 06
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 07
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 08
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 09
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 10
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 11
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 12
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        //Tabel 1 --- 13
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+        table1.addCell(new Cell().add(new Paragraph("")));
+
+        document.add(table1);
 
 
         // -------- END Content --------
-
-        document.add(image);
 
         document.close();
 
@@ -107,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     private void previewPdf() {
         // Get the File location and file name.
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                "/Tes1.pdf");
+                "/Tes3.pdf");
         Log.d("pdfFIle", "" + file);
 
         // Get the URI Path of file.
